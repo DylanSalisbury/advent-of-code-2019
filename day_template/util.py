@@ -1,4 +1,4 @@
 """Helper functions."""
 
-def fun(args):
-  pass
+def func(n):
+  return n

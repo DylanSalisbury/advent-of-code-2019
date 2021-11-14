@@ -3,9 +3,8 @@ import util
 
 class UtilTest(unittest.TestCase):
 
-  def test_seat_spec_to_id(self):
-    # self.assertEqual(expected, util.func(args))
-    pass
+  def test_func(self):
+    self.assertEqual(327, util.func(327))
 
 if __name__ == '__main__':
     unittest.main()
