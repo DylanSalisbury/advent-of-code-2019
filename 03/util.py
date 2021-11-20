@@ -60,3 +60,38 @@ def intersection_points(segments1, segments2):
 def manhattan_distances(points):
   result = [abs(point[0]) + abs(point[1]) for point in points]
   return tuple(result)
+
+
+def step_distances(s, intersection_points):
+  result = [None] * len(intersection_points)
+  cur_pt = [0, 0]
+
+  l = 0
+  for step in s.split(','):
+    direction = step[0]
+    distance = int(step[1:])
+    for _ in range(distance):
+      l += 1
+      if direction == 'U':
+        cur_pt[1] += 1
+      elif direction == 'D':
+        cur_pt[1] -= 1
+      elif direction == 'L':
+        cur_pt[0] -= 1
+      elif direction == 'R':
+        cur_pt[0] += 1
+      else:
+        raise ValueError('Unknown direction ' + direction)
+
+      tp = tuple(cur_pt)
+      if tp in intersection_points:
+        result[intersection_points.index(tp)] = l
+
+  return tuple(result)  
+
+
+def min_sum_of_steps(s1, s2):
+  points = intersection_points(path_to_segments(s1), path_to_segments(s2))
+  distances1 = step_distances(s1, points)
+  distances2 = step_distances(s2, points)
+  return min([distances1[i] + distances2[i] for i in range(len(distances1))])
