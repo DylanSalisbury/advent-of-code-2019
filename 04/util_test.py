@@ -17,6 +17,12 @@ class UtilTest(unittest.TestCase):
       self.assertEqual(test_case[1], util.part1_inc(test_case[0]))
 
 
+  def test_part2_filter(self):
+    self.assertEqual(True, util.part2_filter(112233))
+    self.assertEqual(False, util.part2_filter(123444))
+    self.assertEqual(True, util.part2_filter(111122))
+
+    
 if __name__ == '__main__':
     unittest.main()
 

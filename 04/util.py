@@ -37,3 +37,14 @@ def solve(begin, end, extra_filter):
     n = z[0]
 
   return result
+
+
+def part2_filter(n):
+  digits = list(str(n))
+  for i in range(1, len(digits)):
+    if (
+      digits[i] == digits[i-1]
+      and (i == 1 or digits[i-1] != digits[i-2])
+      and (i == len(digits) - 1 or digits[i] != digits[i+1])):
+      return True
+  return False
