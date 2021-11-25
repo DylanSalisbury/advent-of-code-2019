@@ -23,3 +23,17 @@ def part1_inc(n):
   #   digits[len(digits) - 1] = '9'
 
   return (int(''.join(digits)), will_succeed)
+
+
+def solve(begin, end, extra_filter):
+  n = begin
+
+  result = 0
+  while (n <= end):
+    z = part1_inc(n)
+    if z[1] and z[0] <= end:
+      if not extra_filter or extra_filter(z[0]):
+        result += 1
+    n = z[0]
+
+  return result
